@@ -1,40 +1,33 @@
-import throttle from 'lodash.throttle';
-
-const btnStartRef = document.querySelector("button[data-start]");
-const btnStopRef = document.querySelector("button[data-stop]");
+const btnStart = document.querySelector("button[data-start]");
+const btnStop = document.querySelector("button[data-stop]");
 const bodyRef = document.querySelector("body");
 
 
-btnStartRef.addEventListener('click', onBtnStartRefClick);
-btnStopRef.addEventListener('click', onBtnStopRefClick);
+btnStart.addEventListener('click', () => {timerId = setInterval(onBtnStartClick, 1000)});
+btnStop.addEventListener('click', onBtnStopClick);
 
-btnStopRef.disabled = true; // кнопка стоп изначально не активна
+btnStop.disabled = true; // кнопку стоп изначально делаем не активной
+
+let timerId = null;
 
 // Изменение цвета body
 function changeBodyColor() {
     bodyRef.style.backgroundColor = getRandomHexColor();
 }
 
-function onBtnStartRefClick() {    
-    btnStartRef.disabled = true;
-    if (btnStopRef.disabled) {
-            btnStopRef.disabled = false;
-
+function onBtnStartClick() {    
+    btnStart.disabled = true;
+    if (btnStop.disabled) {
+            btnStop.disabled = false;
     }
     changeBodyColor();
-    console.log("Hello")
-    
-//     if (btnStartRef.disabled) {
-//     console.log("disabled");
-//     throttle(changeBodyColor, 1000);
-// }
 }
  
-function onBtnStopRefClick() {
-    btnStartRef.disabled = false;
-    btnStopRef.disabled = true;
+function onBtnStopClick() {
+    btnStart.disabled = false;
+    btnStop.disabled = true;
 
-    console.log("Bye")
+    clearInterval(timerId); // очищаем данные setInterval-a
 }
 
 function getRandomHexColor() {
