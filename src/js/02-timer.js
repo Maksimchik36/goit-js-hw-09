@@ -10,7 +10,6 @@ const daysRef = document.querySelector("span[data-days]");
 const hoursRef = document.querySelector("span[data-hours]");
 const minutesRef = document.querySelector("span[data-minutes]");
 const secondsRef = document.querySelector("span[data-seconds]");
-const timerRef = document.querySelector(".timer");
 
 // По умолчанию должно быть - "ничто"
 let timerId = null;
