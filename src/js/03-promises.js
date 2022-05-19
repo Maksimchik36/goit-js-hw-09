@@ -23,16 +23,19 @@ function createPromise(position, delay) {
   })  
   return promise;
 }
-
+// Собирает значения из инпутов формы и записывает их в объект параметров inputData
 function getDataFromInputs(event){
   event.preventDefault();
   inputData.amount = Number(event.currentTarget.amount.value);
   inputData.step = Number(event.currentTarget.step.value);
   inputData.delay = Number(event.currentTarget.delay.value);
-  abracadabra(inputData);
+  
+  visualizeLoopOfPromises(inputData);
+  formRef.reset();
 }
 
-function abracadabra({amount, step, delay}){
+// Запускает визуализацию цикла промисов, исходя из полученных данных 
+function visualizeLoopOfPromises({amount, step, delay}){
 for(let i = 1; i <= amount; i += 1){
   let position = i;
 
@@ -46,8 +49,3 @@ for(let i = 1; i <= amount; i += 1){
   delay += step;
 }
 }
-
-
-
-
-
