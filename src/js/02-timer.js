@@ -4,6 +4,8 @@ import "flatpickr/dist/flatpickr.min.css";
 import Notiflix from 'notiflix';
 
 const startBtnRef = document.querySelector("button[data-start]");
+const inputRef = document.querySelector("#datetime-picker");
+
 startBtnRef.disabled = true;
 
 const daysRef = document.querySelector("span[data-days]");
@@ -37,7 +39,8 @@ const options = {
 };
 
 // Инициализация библиотеки на элементе input#datetime-picker
-const inputData = flatpickr("#datetime-picker", options);
+// const inputData = flatpickr("#datetime-picker", options);
+const inputData = flatpickr(inputRef, options);
 
 function onStartBtnClick(){
   if(timerId !== null){
@@ -45,6 +48,7 @@ function onStartBtnClick(){
   }
 
   startBtnRef.disabled = true;
+  inputRef.disabled = true;
 
   timerId = setInterval(()=>{
     const deltaTimeValue = countDeltaTime();

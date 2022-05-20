@@ -4,7 +4,10 @@ const bodyRef = document.querySelector("body");
 
 let timerId = null;
 
-btnStart.addEventListener('click', () => {timerId = setInterval(onBtnStartClick, 1000)});
+btnStart.addEventListener('click', () => {   
+    timerId = setInterval(onBtnStartClick, 1000);   
+    btnStart.disabled = true;
+});
 btnStop.addEventListener('click', onBtnStopClick);
 
 btnStop.disabled = true; // кнопку стоп изначально делаем не активной
@@ -15,9 +18,6 @@ function changeBodyColor() {
 }
 
 function onBtnStartClick() {   
-    if (!btnStart.disabled) {
-        btnStart.disabled = true;
-    }
     if (btnStop.disabled) {
             btnStop.disabled = false;
     }
